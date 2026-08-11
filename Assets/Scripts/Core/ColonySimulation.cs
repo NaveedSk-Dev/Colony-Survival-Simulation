@@ -33,6 +33,12 @@ public class ColonySimulation
 
     public void AdvanceTime(float deltaTime)
     {
+        // Once the colony is starving, the simulation stops.
+        if (IsStarving())
+        {
+            return;
+        }
+
         elapsedGameTime += deltaTime;
 
         while (elapsedGameTime >= 1f)
@@ -40,6 +46,12 @@ public class ColonySimulation
             elapsedGameTime -= 1f;
 
             AdvanceOneDay();
+
+            // Stop immediately if this day caused starvation.
+            if (IsStarving())
+            {
+                return;
+            }
         }
     }
 
