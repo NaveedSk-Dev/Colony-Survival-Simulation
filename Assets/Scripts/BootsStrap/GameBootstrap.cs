@@ -7,7 +7,6 @@ public class GameBootstrap : MonoBehaviour
 
     private ColonySimulation simulation;
 
-    private int lastLoggedDay = -1;
     private bool starvationLogged;
 
     private void Start()
@@ -59,22 +58,12 @@ public class GameBootstrap : MonoBehaviour
 
         colonyUI.Refresh(simulation);
 
-        if (simulation.CurrentDay != lastLoggedDay)
-        {
-            lastLoggedDay = simulation.CurrentDay;
-
-            Debug.Log(
-                $"Game Day {simulation.CurrentDay} | " +
-                $"Food: {simulation.Food:F1} | " +
-                $"Water: {simulation.Water:F1}"
-            );
-
             if (simulation.IsStarving() && !starvationLogged)
             {
                 starvationLogged = true;
 
                 Debug.LogWarning("COLONY STARVING");
             }
-        }
+        
     }
 }
