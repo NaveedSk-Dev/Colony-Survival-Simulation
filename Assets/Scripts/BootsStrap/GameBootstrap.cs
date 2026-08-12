@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class GameBootstrap : MonoBehaviour
 {
+    [SerializeField]
+    private ColonyUI colonyUI;
+
     private ColonySimulation simulation;
 
     private int lastLoggedDay = -1;
@@ -35,6 +38,8 @@ public class GameBootstrap : MonoBehaviour
             consumption.waterPerVillager
         );
 
+        colonyUI.Refresh(simulation);
+
         Debug.Log(
             $"Colony initialized. " +
             $"Villagers: {population.villagers}, " +
@@ -51,6 +56,8 @@ public class GameBootstrap : MonoBehaviour
         }
 
         simulation.AdvanceTime(Time.deltaTime);
+
+        colonyUI.Refresh(simulation);
 
         if (simulation.CurrentDay != lastLoggedDay)
         {
