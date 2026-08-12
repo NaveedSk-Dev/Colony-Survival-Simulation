@@ -156,7 +156,7 @@ No mobile-specific gameplay controls were added because they were outside the sc
 
 Demo video:
 
-TODO — add demo video link before submission.
+[Watch the 30-second demo]https://youtu.be/atW5TkLsns0
 
 ## Git History
 
